@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
+import 'patient_details.dart';
 
 const redBookRed = Color.fromARGB(255, 237, 29, 36);
 
@@ -118,7 +118,37 @@ class _RedBookHomeState extends State<RedBookHome> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      bottomNavigationBar: BottomAppBar( // Added BottomAppBar
+        shape: const CircularNotchedRectangle(), // Optional: Adds a notch for the FAB
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround, // Distribute items
+          children: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.home),
+              onPressed: () {
+                // Optional: Add navigation to a "home" screen if needed
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.person), // Patient Details icon
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PatientDetails()),
+                );
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                // Optional: Add navigation to a "settings" screen
+              },
+            ),
+          ],
+        ),
+      ),
+
     );
   }
 }
